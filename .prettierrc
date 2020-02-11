@@ -1,0 +1,26 @@
+{
+    "editor.formatOnSave": true,
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "jsxSingleQuote": false,
+    "eslintIntegration": true,
+    "semi": true,
+    "singleQuote": false,
+    "printWidth": 140,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "endOfLine": "lf",
+    "overrides": [
+        {
+            "files": "*.md",
+            "options": {
+                "singleQuote": false
+            }
+        },
+        {
+            "files": ".prettierrc",
+            "options": { "parser": "json" }
+        }
+    ]
+}

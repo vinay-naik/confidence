@@ -1,8 +1,8 @@
 ![confidence Logo](https://raw.githubusercontent.com/hapipal/confidence/master/images/confidence.png)
 
 **Confidence** is a configuration document format, an API, and a foundation for A/B testing. The configuration format is designed to
-work with any existing JSON-based configuration, serving values based on object path (`'/a/b/c'` translates to ``a.b.c``). In addition,
-**confidence** defines special $-prefixed keys used to filter values for a given criteria.
+work with any existing JSON-based configuration, serving values based on object path (`'/a/b/c'` translates to `a.b.c`). In addition,
+**confidence** defines special \$-prefixed keys used to filter values for a given criteria.
 
 Version 4.x only supports node v8.9.0 and over. For older version of node please use version 3.x.
 
@@ -10,20 +10,20 @@ Version 4.x only supports node v8.9.0 and over. For older version of node please
 
 Lead Maintainer: [Sunny Bhanot](https://github.com/augnin)
 
-- [Example](#example)
-- [Document Format](#document-format)
-    - [Basic Structure](#basic-structure)
-    - [Environment Variables](#environment-variables)
-    - [Criteria Parameters](#criteria-parameters)
-    - [Filters](#filters)
-    - [Ranges](#ranges)
-    - [Metadata](#metadata)
-- [API](#api)
-    - [Store](#confidencestore)
-        - [new Store(document)](#new-storedocument)
-        - [store.load(document)](#storeloaddocument)
-        - [store.get(key, [criteria])](#storegetkey-criteria)
-        - [store.meta(key, [criteria])](#storemetakey-criteria)
+-   [Example](#example)
+-   [Document Format](#document-format)
+    -   [Basic Structure](#basic-structure)
+    -   [Environment Variables](#environment-variables)
+    -   [Criteria Parameters](#criteria-parameters)
+    -   [Filters](#filters)
+    -   [Ranges](#ranges)
+    -   [Metadata](#metadata)
+-   [API](#api)
+    -   [Store](#confidencestore)
+        -   [new Store(document)](#new-storedocument)
+        -   [store.load(document)](#storeloaddocument)
+        -   [store.get(key, [criteria])](#storegetkey-criteria)
+        -   [store.meta(key, [criteria])](#storemetakey-criteria)
 
 # Example
 
@@ -113,7 +113,7 @@ The result is:
 
 ### Basic structure
 
-The configuration document starts with a simple object. Key names can only contain alphanumeric characters and '_' with the '$' prefix reserved
+The configuration document starts with a simple object. Key names can only contain alphanumeric characters and '\_' with the '\$' prefix reserved
 for special directives. Values can contain any non-object value (e.g. strings, numbers, booleans) as well as arrays.
 
 ```json
@@ -142,11 +142,11 @@ In many scenarios, configuration documents may need to pull values from environm
 ```json
 {
     "mysql": {
-        "host": { "$env" : "MYSQL_HOST" },
-        "port": { "$env" : "MYSQL_PORT" },
-        "user": { "$env" : "MYSQL_USER" },
-        "password": { "$env" : "MYSQL_PASSWORD" },
-        "database": { "$env" : "MYSQL_DATABASE" },
+        "host": { "$env": "MYSQL_HOST" },
+        "port": { "$env": "MYSQL_PORT" },
+        "user": { "$env": "MYSQL_USER" },
+        "password": { "$env": "MYSQL_PASSWORD" },
+        "database": { "$env": "MYSQL_DATABASE" }
     }
 }
 ```
@@ -180,11 +180,11 @@ The result is:
 ```json
 {
     "mysql": {
-        "host": { "$env" : "MYSQL_HOST" },
-        "port": { "$env" : "MYSQL_PORT", "$default": 3306 },
-        "user": { "$env" : "MYSQL_USER" },
-        "password": { "$env" : "MYSQL_PASSWORD" },
-        "database": { "$env" : "MYSQL_DATABASE" },
+        "host": { "$env": "MYSQL_HOST" },
+        "port": { "$env": "MYSQL_PORT", "$default": 3306 },
+        "user": { "$env": "MYSQL_USER" },
+        "password": { "$env": "MYSQL_PASSWORD" },
+        "database": { "$env": "MYSQL_DATABASE" }
     }
 }
 ```
@@ -217,15 +217,15 @@ The result is:
 ```json
 {
     "mysql": {
-        "host": { "$env" : "MYSQL_HOST" },
+        "host": { "$env": "MYSQL_HOST" },
         "port": {
-            "$env" : "MYSQL_PORT",
+            "$env": "MYSQL_PORT",
             "$coerce": "number",
             "$default": 3306
         },
-        "user": { "$env" : "MYSQL_USER" },
-        "password": { "$env" : "MYSQL_PASSWORD" },
-        "database": { "$env" : "MYSQL_DATABASE" },
+        "user": { "$env": "MYSQL_USER" },
+        "password": { "$env": "MYSQL_PASSWORD" },
+        "database": { "$env": "MYSQL_DATABASE" }
     }
 }
 ```
@@ -253,6 +253,7 @@ The result is:
     }
 }
 ```
+
 With following Enviornment Variables:
 
 ```sh
@@ -277,7 +278,6 @@ The result is:
 }
 ```
 
-
 ### Criteria Parameters
 
 In many scenarios, configuration documents may need to pull values fron `criteria`. Confidence allows you to refer to `criteria` using `$param` directive.
@@ -285,11 +285,11 @@ In many scenarios, configuration documents may need to pull values fron `criteri
 ```json
 {
     "mysql": {
-        "host": { "$param" : "credentials.mysql.host" },
-        "port": { "$param" : "credentials.mysql.port" },
-        "user": { "$param" : "credentials.mysql.user" },
-        "password": { "$param" : "credentials.mysql.password" },
-        "database": { "$param" : "credentials.mysql.database" },
+        "host": { "$param": "credentials.mysql.host" },
+        "port": { "$param": "credentials.mysql.port" },
+        "user": { "$param": "credentials.mysql.user" },
+        "password": { "$param": "credentials.mysql.password" },
+        "database": { "$param": "credentials.mysql.database" }
     }
 }
 ```
@@ -329,14 +329,13 @@ The result is:
 ```json
 {
     "mysql": {
-        "host": { "$param" : "credentials.mysql.host" },
-        "port": { "$param" : "credentials.mysql.port", "$default": 3306 },
-        "user": { "$param" : "credentials.mysql.user" },
-        "password": { "$param" : "credentials.mysql.password" },
-        "database": { "$param" : "credentials.mysql.database" },
+        "host": { "$param": "credentials.mysql.host" },
+        "port": { "$param": "credentials.mysql.port", "$default": 3306 },
+        "user": { "$param": "credentials.mysql.user" },
+        "password": { "$param": "credentials.mysql.password" },
+        "database": { "$param": "credentials.mysql.database" }
     }
 }
-
 ```
 
 With following `criteria`:
@@ -369,11 +368,10 @@ The result is:
 }
 ```
 
-
 ### Filters
 
 A key can have multiple values based on a filter. The filter is a key provided in a criteria object at the time of retrieval. Filter names can only
-contain alphanumeric characters and '_'.
+contain alphanumeric characters and '\_'.
 
 ```json
 {
@@ -412,6 +410,7 @@ Filters can have a default value which will be used if the provided criteria set
     }
 }
 ```
+
 Filters can also refer to environment variables using `$env` directive.
 
 ```json
@@ -420,15 +419,15 @@ Filters can also refer to environment variables using `$env` directive.
     "key2": {
         "$filter": { "$env": "NODE_ENV" },
         "production": {
-            "host": { "$env" : "MYSQL_HOST" },
+            "host": { "$env": "MYSQL_HOST" },
             "port": {
-                "$env" : "MYSQL_PORT",
+                "$env": "MYSQL_PORT",
                 "$coerce": "number",
                 "$default": 3306
             },
-            "user": { "$env" : "MYSQL_USER" },
-            "password": { "$env" : "MYSQL_PASSWORD" },
-            "database": { "$env" : "MYSQL_DATABASE" },
+            "user": { "$env": "MYSQL_USER" },
+            "password": { "$env": "MYSQL_PASSWORD" },
+            "database": { "$env": "MYSQL_DATABASE" }
         },
         "$default": {
             "host": "127.0.0.1",
@@ -528,44 +527,44 @@ If you have values that you would like to share between various configuration ob
 
 ```json
 {
-  "$filter": "env",
-  "$base": {
-      "logLocation": "/logs"
-  },
-  "production":  {
-      "logLevel": "error"
-  },
-  "qa":  {
-      "logLevel": "info",
-      "logLocation": "/qa/logs"
-  },
-  "staging":  {
-      "logLevel": "debug"
-  }
+    "$filter": "env",
+    "$base": {
+        "logLocation": "/logs"
+    },
+    "production": {
+        "logLevel": "error"
+    },
+    "qa": {
+        "logLevel": "info",
+        "logLocation": "/qa/logs"
+    },
+    "staging": {
+        "logLevel": "debug"
+    }
 }
 ```
 
 When requesting the **key** `/` with:
 
-* **criteria** of `{ "env" : "production" }`
-* Result will be:
+-   **criteria** of `{ "env" : "production" }`
+-   Result will be:
 
 ```json
 {
-	"logLevel": "error",
-	"logLocation": "/logs"
+    "logLevel": "error",
+    "logLocation": "/logs"
 }
 ```
 
 However when requesting the **key** `/` with:
 
-* **criteria** of `{ "env" : "staging" }`
-* Result will be:
+-   **criteria** of `{ "env" : "staging" }`
+-   Result will be:
 
 ```json
 {
-	"logLevel": "debug",
-	"logLocation": "/logs"
+    "logLevel": "debug",
+    "logLocation": "/logs"
 }
 ```
 
@@ -573,15 +572,14 @@ If the same key occurs in `$base` and the `filtered value` then value in `$base`
 
 In the above sample, when requesting the **key** `/` with:
 
-* **criteria** of `{ "env": "qa" }`
+-   **criteria** of `{ "env": "qa" }`
 
-* Result will be:
-
+-   Result will be:
 
 ```json
 {
-	"logLevel": "info",
-	"logLocation": "/qa/logs"
+    "logLevel": "info",
+    "logLocation": "/qa/logs"
 }
 ```
 
@@ -595,11 +593,11 @@ The configuration parser used to load the configuration document and apply crite
 
 Creates an empty configuration storage container where:
 
-- `document` - an optional object containing a **confidence** configuration object generated from a parsed JSON document.
-  If the document is invalid, will throw an error. Defaults to `{}`.
+-   `document` - an optional object containing a **confidence** configuration object generated from a parsed JSON document.
+    If the document is invalid, will throw an error. Defaults to `{}`.
 
 ```javascript
-const Confidence = require('confidence');
+const Confidence = require("confidence");
 
 const store = new Confidence.Store();
 ```
@@ -608,19 +606,19 @@ const store = new Confidence.Store();
 
 Validates the provided configuration, clears any existing configuration, then loads the configuration where:
 
-- `document` - an object containing a **confidence** configuration object generated from a parsed JSON document.
-  If the document is invalid, will throw an error.
+-   `document` - an object containing a **confidence** configuration object generated from a parsed JSON document.
+    If the document is invalid, will throw an error.
 
 ```javascript
 const document = {
     a: 1,
     b: 2,
     c: {
-        $filter: 'size',
+        $filter: "size",
         big: 100,
         small: 1,
-        $default: 50
-    }
+        $default: 50,
+    },
 };
 
 store.load(document);
@@ -630,24 +628,24 @@ store.load(document);
 
 Retrieves a value from the configuration document after applying the provided criteria where:
 
-- `key` - the requested key path. All keys must begin with '/'. '/' returns the the entire document.
-- `criteria` - optional object used as criteria for applying filters in the configuration document. Defaults to `{}`.
+-   `key` - the requested key path. All keys must begin with '/'. '/' returns the the entire document.
+-   `criteria` - optional object used as criteria for applying filters in the configuration document. Defaults to `{}`.
 
 Returns the value found after applying the criteria. If the key is invalid or not found, returns undefined.
 
 ```javascript
-const value = store.get('/c', { size: 'big' });
+const value = store.get("/c", { size: "big" });
 ```
 
 ### store.meta(key, [criteria])
 
 Retrieves the metadata (if any) from the configuration document after applying the provided criteria where:
 
-- `key` - the requested key path. All keys must begin with '/'. '/' returns the the entire document.
-- `criteria` - optional object used as criteria for applying filters in the configuration document. Defaults to `{}`.
+-   `key` - the requested key path. All keys must begin with '/'. '/' returns the the entire document.
+-   `criteria` - optional object used as criteria for applying filters in the configuration document. Defaults to `{}`.
 
 Returns the metadata found after applying the criteria. If the key is invalid or not found, or if no metadata is available, returns undefined.
 
 ```javascript
-const value = store.meta('/c', { size: 'big' });
+const value = store.meta("/c", { size: "big" });
 ```

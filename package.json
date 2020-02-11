@@ -1,31 +1,35 @@
 {
-  "name": "confidence",
-  "description": "Configuration API",
-  "version": "4.0.2",
-  "repository": "git://github.com/hapipal/confidence",
-  "main": "lib/index.js",
-  "keywords": [
-    "hapi",
-    "plugin",
-    "configuration",
-    "api"
-  ],
-  "dependencies": {
-    "alce": "1.x.x",
-    "@hapi/hoek": "6.x.x",
-    "@hapi/joi": "15.x.x",
-    "yargs": "13.x.x"
-  },
-  "devDependencies": {
-    "@hapi/code": "5.x.x",
-    "@hapi/lab": "19.x.x"
-  },
-  "bin": {
-    "confidence": "bin/confidence"
-  },
-  "scripts": {
-    "test": "lab -t 100 -a @hapi/code -L",
-    "test-cov-html": "lab -r html -o coverage.html -a @hapi/code -L"
-  },
-  "license": "BSD-3-Clause"
+    "name": "confidence",
+    "description": "Configuration API",
+    "version": "4.0.2",
+    "repository": "git://github.com/hapipal/confidence",
+    "main": "lib/index.js",
+    "keywords": [
+        "hapi",
+        "plugin",
+        "configuration",
+        "api"
+    ],
+    "dependencies": {
+        "@hapi/hoek": "9.0.3",
+        "@hapi/joi": "17.1.0",
+        "alce": "1.x.x",
+        "yargs": "15.1.0"
+    },
+    "devDependencies": {
+        "@hapi/code": "8.0.1",
+        "@hapi/lab": "22.0.3",
+        "prettier": "~1.19.1",
+        "prettier-eslint": "~9.0.1",
+        "prettier-eslint-cli": "~5.0.0"
+    },
+    "bin": {
+        "confidence": "bin/confidence"
+    },
+    "scripts": {
+        "test": "lab -t 100 -a @hapi/code -L",
+        "test-cov-html": "lab -r html -o coverage.html -a @hapi/code -L",
+        "fix-code": "prettier-eslint --write '**/*.{js,ts,json,md}'"
+    },
+    "license": "BSD-3-Clause"
 }
